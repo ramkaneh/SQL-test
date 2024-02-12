@@ -1,0 +1,19 @@
+1)
+SELECT email, COUNT(*) AS count
+FROM Staff
+GROUP BY email
+HAVING count > 1;
+-----------------------
+2)
+SELECT name, TIMESTAMPDIFF(YEAR, birthday, CURDATE()) AS age
+FROM Staff;
+-----------------------
+3)
+SELECT name
+FROM Jobtitles
+WHERE jobtitle_id = (
+    SELECT jobtitle_id
+    FROM Staff
+    ORDER BY salary DESC
+    LIMIT 1 OFFSET 1
+);
